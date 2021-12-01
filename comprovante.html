@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: 'Arial', Sans-serif;
+            text-align: center;
+        }
+
+        section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        table {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            margin: 25px 0;
+            background-color: #feffc4;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px dashed black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px
+        }
+
+        section {
+            border: 2px solid black;
+            width: 70%;
+        }
+
+        img {
+            left: 50%;
+            align-self: center;
+            margin: 15px 0;
+        }
+
+        h2 {
+            padding: 0;
+            text-align: center;
+        }
+
+        .preco {
+            padding: 10px 10px 10px 10px;
+            border: 1.5px solid black;
+            background-color: #78fac2;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <table class="comprovante">
+            <img src="https://i.imgur.com/FP40dmg.jpg" width="15%">
+            <h1>Cupom Fiscal</h1>
+            <p><i>Bunny It - Papelaria</i></p>
+            <tr class="ttu">
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Preço Unit.</th>
+                <th>Subtotal</th>
+            </tr>
+            {% for product in cart %}
+            <tr class="ttu">
+                <td>{{ product.id }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.subtotal }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <p><i>Compra efetuada em:</i>{{ dateTime }}</p>
+        <br />
+        <span class="preco"><b>Preço total</b> {{ totalPrice }}</span>
+    </section>
+</body>
+
+</html>
